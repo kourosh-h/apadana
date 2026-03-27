@@ -20,7 +20,7 @@ setup(
     description='Apadana makes functionalized silica surface with alkylsilanes',
     author='Kourosh Hasheminejad',
     author_email='kourosh.hasheminejad@gmail.com',
-    #url='https://github.com/yourusername/mypackage',
+    url='https://github.com/kourosh-h/apadana/tree/main',
     install_requires=[
         "mbuild==0.16.0",
         "foyer==0.12.1",
