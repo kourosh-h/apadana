@@ -1,0 +1,27 @@
+Apadana_Project/
+├── setup.py                # The installation script you provided
+├── MANIFEST.in             # Critical for including non-python files (XML, PDB)
+├── README.md               # Instructions for the user
+├── LICENSE                 # License file
+└── apadana/                # The actual package folder
+    ├── __init__.py         # Makes this directory a importable package
+    ├── functionalizer.py   # Main grafting logic
+    ├── modellingSurface.py # AlphaQuartz class and surface loading
+    ├── modellingMolecules.py # Alkysilane and molecule definitions
+    ├── forcefields.py      # Forcefield helpers
+    ├── fileReading.py      # Input utilities
+    ├── fileWriting.py      # Output and GROMACS script utilities
+    ├── EMAMI_CHARMM.xml    # CHARMM-compatible forcefield
+    ├── EMAMI.xml           # Alternative forcefield
+    ├── additional_files/   # Core silica files
+    │   ├── unitcell.pdb
+    │   ├── unitcell.gro
+    │   ├── slab.pdb
+    │   └── slab.gro
+    ├── charmm36-jul2022.ff/ # GROMACS forcefield directory
+    │   └── (forcefield files like .itp, .atp, etc.)
+    └── charmm-gui-0720347578/ # Original CHARMM-GUI inputs
+        ├── gromacs/
+        │   └── step3_input.gro
+        └── openmm/
+            └── step3_input.pdb

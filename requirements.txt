@@ -1,0 +1,17 @@
+# --- Core Molecular Modeling (MosDeF Stack) ---
+mbuild==0.16.0
+foyer==0.12.1
+parmed==4.2.2
+
+# --- Math, Data & Analysis ---
+numpy>=1.24.0
+pandas>=2.0.0
+tqdm
+
+# --- Visualization ---
+py3Dmol>=2.4.0
+
+# --- Compatibility & Build Fixes ---
+# CRITICAL: Do not upgrade setuptools beyond 69.5.1
+setuptools==69.5.1
+ipykernel

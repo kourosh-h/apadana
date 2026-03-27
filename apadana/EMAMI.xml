@@ -1,0 +1,74 @@
+
+
+
+
+ <ForceField name="emami_silica" version="0.26.2">
+ <AtomTypes>
+    <Type name="ISC4"  class="ISC4"  element="Si" mass="28.0860" def="[Si;X4](O)(O)(O)O" desc="silica bulk Si bonded to four O"/> 
+    <Type name="IOC23" class="IOC23" element="O"  mass="15.9994" def="[O;X2](Si)(Si)" desc="silica bulk bridging O"/>
+    <Type name="IOC24" class="IOC24" element="O"  mass="15.9994" def="[O;X2](Si)H" desc="silica surface hydroxyl O"/>
+    <Type name="IHOY"  class="IHOY"  element="H"  mass="1.0080"  def="H(O)" desc="silica surface hydroxyl H"/>
+ </AtomTypes>
+ <HarmonicBondForce>
+    <Bond class1="IOC24" class2="IHOY" length="9.450000e-02" k="4.142160e+05"/> 
+    <Bond class1="ISC4" class2="IOC23" length="1.680000e-01" k="2.384880e+05"/> 
+    <Bond class1="ISC4" class2="IOC24" length="1.680000e-01" k="2.384880e+05"/> 
+ </HarmonicBondForce>
+ <HarmonicAngleForce>
+    <Angle class1="IOC23" class2="ISC4" class3="IOC23" angle="1.000000e+00" k="1.000000e+00"/> 
+    <Angle class1="IOC23" class2="ISC4" class3="IOC24" angle="1.000000e+00" k="1.000000e+00"/> 
+    <Angle class1="IOC24" class2="ISC4" class3="IOC24" angle="1.000000e+00" k="1.000000e+00"/> 
+    <Angle class1="ISC4" class2="IOC23" class3="ISC4"  angle="1.000000e+00" k="1.000000e+00"/> 
+    <Angle class1="ISC4" class2="IOC24" class3="IHOY"  angle="1.000000e+00" k="1.000000e+00"/> 
+ </HarmonicAngleForce>
+ <RBTorsionForce>
+    <Proper class1="IHOY"  class2="IOC24" class3="ISC4"  class4="IOC24" c0="1.000000e+00" c1="1.000000e+00" c2="3.0" c3="0.0" c4="0.0" c5="0.0"/>
+    <Proper class1="IOC23" class2="ISC4"  class3="IOC24" class4="IHOY"  c0="1.000000e+00" c1="1.000000e+00" c2="3.0" c3="0.0" c4="0.0" c5="0.0"/>
+    <Proper class1="IOC24" class2="ISC4"  class3="IOC23" class4="ISC4"  c0="1.000000e+00" c1="1.000000e+00" c2="3.0" c3="0.0" c4="0.0" c5="0.0"/>
+    <Proper class1="ISC4"  class2="IOC23" class3="ISC4"  class4="IOC23" c0="1.000000e+00" c1="1.000000e+00" c2="2.0" c3="0.0" c4="0.0" c5="0.0"/>
+ </RBTorsionForce>
+ <NonbondedForce coulomb14scale="1.0" lj14scale="1.0">
+     <Atom type="ISC4"  charge="1.100"  sigma="3.69722968028e-01" epsilon="3.891120e-01"/>
+     <Atom type="IOC23" charge="-0.550" sigma="3.09141855195e-01" epsilon="2.259360e-01"/>
+     <Atom type="IOC24" charge="-0.675" sigma="3.09141855195e-01" epsilon="5.104480e-01"/>
+     <Atom type="IHOY"  charge="0.400"  sigma="9.66625109182e-02" epsilon="6.276000e-02"/>
+ </NonbondedForce>
+</ForceField>
+
+
+
+
+
+<!--
+
+ Additional Notes
+ - The original parameters are defined as kcal/mol, this file uses kJ/mol; a conversion factor of 4.184 was used,
+    consistent with openMM. 
+ - PI is defined as 3.141592653589 for conversion to radians, consistent with openMM.
+ - Conversion from OPLS-style dihedrals to RB follow the formulas detailed in the GROMACS manual. Specifically,
+   OPLS form: 
+     0.5*(F1*(1+cos(phi))+ F2*(1-cos(2phi))+ F3*(1+cos(3phi))+F4*(1-cos(4phi)))
+   RB mapping:
+     c0 = F2+0.5*(F1+F3)
+     c1 = 0.5*(-F1+3F3)
+     c2 = -F2 + 4F4
+     c3 = -2F3
+     c4 = -4F4
+     c5 = 0
+
+
+<CustomAngleForce energy="(scale*kth*(theta-theta0)^2)+(scale*kub*(s-s0)^2)">
+ <GlobalParameter name="scale" defaultValue="0.5"/>
+ <PerAngleParameter name=" theta0"/>
+ <PerAngleParameter name="kth"/>
+ <PerAngleParameter name=" s0"/>
+ <PerAngleParameter name="kub"/>
+ <Angle class1="IOC23" class2="ISC4" class3="IOC23" theta0="1.0950000e+02" kth="8.3680000e+02" s0="0.0000000e+00" kub="0.0000000e+00"/> 
+ <Angle class1="IOC23" class2="ISC4" class3="IOC24" theta0="1.0950000e+02" kth="8.3680000e+02" s0="0.0000000e+00" kub="0.0000000e+00"/> 
+ <Angle class1="IOC24" class2="ISC4" class3="IOC24" theta0="1.0950000e+02" kth="8.3680000e+02" s0="0.0000000e+00" kub="0.0000000e+00"/> 
+ <Angle class1="ISC4" class2="IOC23" class3="ISC4"  theta0="1.4900000e+02" kth="8.3680000e+02" s0="0.0000000e+00" kub="0.0000000e+00"/> 
+ <Angle class1="ISC4" class2="IOC24" class3="IHOY"  theta0="1.1500000e+02" kth="4.1840000e+02" s0="0.0000000e+00" kub="0.0000000e+00"/> 
+</CustomAngleForce>
+
+
+-->

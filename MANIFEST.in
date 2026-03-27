@@ -1,0 +1,5 @@
+include apadana/EMAMI_CHARMM.xml
+include apadana/EMAMI.xml
+recursive-include apadana/additional_files *
+recursive-include apadana/charmm-gui-0720347578 *
+recursive-include apadana/charmm36-jul2022.ff *
